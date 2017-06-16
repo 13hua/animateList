@@ -1,0 +1,19 @@
+{
+  "name": "animate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cfx1314/animateList.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cfx1314/animateList/issues"
+  },
+  "homepage": "https://github.com/cfx1314/animateList#readme"
+}

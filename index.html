@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="myApp" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>金币下注专题页面</title>
+    <!--<link href="http://libs.baidu.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <style>
+        .title,.child{
+            width: 200px;
+            height: 100px;
+            margin: 1px;
+            text-align: center;
+            color: #CCCCCC;
+            font-size: 20px;
+        }
+        .title{
+            background: red;
+        }
+        .child{
+            background: purple;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="myDemoCtrl" style="margin-top: 15px;">
+    <div class="title animated">title</div>
+    <div class="contents ">
+        <div class="child animated" ng-repeat="item in data track by $index" ng-class="{fadeOutLeft:item.leftHide,fadeInLeft:!item.leftHide}">{{item.text}}</div>
+    </div>
+
+</div>
+
+<script src="http://apps.bdimg.com/libs/angular.js/1.3.13/angular.min.js"></script>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular-animate.min.js"></script>
+<script>
+  angular.module('myApp', ['ngAnimate'])
+    .controller('myDemoCtrl', function ($scope,$timeout) {
+      $scope.data=[
+        {
+          text:'content0',
+          leftHide:false
+        },{
+          text:'content1',
+          leftHide:false
+        },{
+          text:'content2',
+          leftHide:false
+        },{
+          text:'content3',
+          leftHide:false
+        },{
+          text:'content4',
+          leftHide:false
+        },{
+          text:'content5',
+          leftHide:false
+        },{
+          text:'content6',
+          leftHide:false
+        },{
+          text:'content7',
+          leftHide:false
+        },{
+          text:'content8',
+          leftHide:false
+        }
+        ]
+
+      for(let i = 0 ; i < $scope.data.length ; i ++){
+        delay1s(i).then(function(data){
+          console.log(data);
+          return delay500ms(i);
+        });
+      }
+
+      function delay1s(i){
+        var p = new Promise(function(resolve,reject){
+          $timeout(function(){
+            console.log("i=",i);
+            $scope.data[i].leftHide = true;
+            resolve(i);
+          },1000*(i+1));
+        });
+        return p;
+      }
+      function delay500ms(i){
+        var p = new Promise(function(resolve,reject){
+          $timeout(function(){
+            console.log("i222=",i);
+            $scope.data[i].leftHide = false;
+            resolve(i);
+          },1000*(i+1));
+        });
+        return p;
+      }
+
+  });
+</script>
+</body>
